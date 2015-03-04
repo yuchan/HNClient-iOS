@@ -7,6 +7,7 @@
 //
 
 #import "HNViewController.h"
+#import <HNClient.h>
 
 @interface HNViewController ()
 
@@ -18,6 +19,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    HNClient *cl = [[HNClient alloc] init];
+    [cl loadTopStories:^(HNItem *item, NSError *error, NSInteger idx, NSInteger count) {
+        if (item) {
+            NSLog(@"%@", item.title);
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning

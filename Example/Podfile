@@ -1,0 +1,14 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'HNClient-iOS', :exclusive => true do
+  pod "HNClient-iOS", :path => "../"
+end
+
+target 'Tests', :exclusive => true do
+  pod "HNClient-iOS", :path => "../"
+
+  pod 'Specta'
+  pod 'Expecta'
+  pod 'FBSnapshotTestCase'
+  pod 'Expecta+Snapshots'
+end

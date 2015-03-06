@@ -40,45 +40,45 @@
     ref = [ref childByAppendingPath:@"topstories"];
     [self.fbRefCache addObject:ref];
     [ref observeSingleEventOfType:FEventTypeValue
-                withBlock:^(FDataSnapshot* snapshot) {
-                    [self.storyCache removeAllObjects];
-                    NSArray *topNewsIdArray = (NSArray *)snapshot.value;
-                    for (NSNumber * num in topNewsIdArray) {
-                        NSString *url = [NSString stringWithFormat:@"%@/item/%ld", firebase_endpoint, [num longValue]];
-                        Firebase *r = [[Firebase alloc] initWithUrl:url];
-                        [r observeSingleEventOfType:FEventTypeValue
-                                          withBlock: ^(FDataSnapshot *snapshot) {
-                                              [self.storyCache addObject:snapshot.value];
-                                              if (block) {
-                                                  if (snapshot.value && ![snapshot.value isEqual:[NSNull null]]){
-                                                      HNItem *item = [[HNItem alloc] initWithItemDictionary:snapshot.value];
-                                                      block(item, nil, self.storyCache.count, [topNewsIdArray count]);
-                                                  }else{
-                                                      block(nil, nil, self.storyCache.count, [topNewsIdArray count]);
+                        withBlock:^(FDataSnapshot* snapshot) {
+                            [self.storyCache removeAllObjects];
+                            NSArray *topNewsIdArray = (NSArray *)snapshot.value;
+                            for (NSNumber * num in topNewsIdArray) {
+                                NSString *url = [NSString stringWithFormat:@"%@/item/%ld", firebase_endpoint, [num longValue]];
+                                Firebase *r = [[Firebase alloc] initWithUrl:url];
+                                [r observeSingleEventOfType:FEventTypeValue
+                                                  withBlock: ^(FDataSnapshot *snapshot) {
+                                                      [self.storyCache addObject:snapshot.value];
+                                                      if (block) {
+                                                          if (snapshot.value && ![snapshot.value isEqual:[NSNull null]]){
+                                                              HNItem *item = [[HNItem alloc] initWithItemDictionary:snapshot.value];
+                                                              block(item, nil, self.storyCache.count, [topNewsIdArray count]);
+                                                          }else{
+                                                              block(nil, nil, self.storyCache.count, [topNewsIdArray count]);
+                                                          }
+                                                      }
+                                                      if (self.storyCache.count == [topNewsIdArray count]) {
+                                                          self.isDone = YES;
+                                                      }
                                                   }
-                                              }
-                                              if (self.storyCache.count == [topNewsIdArray count]) {
-                                                  self.isDone = YES;
-                                              }
-                                          }
-                         
-                                    withCancelBlock: ^(NSError *error) {
-                                        [self.storyCache addObject:error];
-                                        if (block) {
-                                            block(nil, error,self.storyCache.count, [topNewsIdArray count]);
-                                        }
-                                        if (self.storyCache.count == [topNewsIdArray count]) {
-                                            self.isDone = YES;
-                                        }
-                                    }];
-                    }
-                }
-          withCancelBlock:^(NSError* error) {
-              self.isDone = YES;
-              if (block) {
-                  block(nil, error, 0, 0);
-              }
-          }];
+                                 
+                                            withCancelBlock: ^(NSError *error) {
+                                                [self.storyCache addObject:error];
+                                                if (block) {
+                                                    block(nil, error,self.storyCache.count, [topNewsIdArray count]);
+                                                }
+                                                if (self.storyCache.count == [topNewsIdArray count]) {
+                                                    self.isDone = YES;
+                                                }
+                                            }];
+                            }
+                        }
+                  withCancelBlock:^(NSError* error) {
+                      self.isDone = YES;
+                      if (block) {
+                          block(nil, error, 0, 0);
+                      }
+                  }];
 }
 
 - (void)loadUser:(NSString*)userName complete:(void (^)(HNUser *user, NSError* error, NSInteger idx, NSInteger count))block
@@ -95,7 +95,7 @@
     }];
 }
 
-- (void)loadChild:(HNItem*)parent OnChildLoaded:(void (^)(HNItem* item, HNItem* parent))block onStart:(BOOL)onstart
+- (void)loadChild:(HNItem*)parent OnChildLoaded:(void (^)(HNItem* item, HNItem* parent))block onStart:(BOOL)onstart recursive:(BOOL)recursive
 {
     if (onstart) {
         for (Firebase *f in self.fbRefCache) {
@@ -118,13 +118,26 @@
                     if (block) {
                         block(item, parent);
                     }
-                    [self loadChild:item OnChildLoaded:block onStart:NO];
+                    if (recursive) {
+                        [self loadChild:item OnChildLoaded:block onStart:NO];
+                    }
                 }
             } withCancelBlock:^(NSError* error){
+                if (block) {
+                    block(nil, parent);
+                }
             }];
         }];
+    }else{
+        if (block) {
+            block(nil, parent);
+        }
     }
- 
+}
+
+- (void)loadChild:(HNItem*)parent OnChildLoaded:(void (^)(HNItem* item, HNItem* parent))block onStart:(BOOL)onstart
+{
+    [self loadChild:parent OnChildLoaded:block onStart:onstart recursive:NO];
 }
 
 - (void)loadChild:(HNItem*)parent OnChildLoaded:(void (^)(HNItem* item, HNItem* parent))block

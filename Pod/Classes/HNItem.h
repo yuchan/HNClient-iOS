@@ -14,7 +14,7 @@
 @property (nonatomic) NSInteger depth;
 @property (nonatomic, readonly) NSString* title;
 @property (nonatomic, readonly) NSString* username;
-@property (nonatomic, readonly) NSInteger itemID;
+@property (nonatomic, readonly) NSNumber* itemID;
 @property (nonatomic, readonly) NSNumber* updated;
 @property (nonatomic, readonly) NSNumber* score;
 @property (nonatomic, readonly) NSArray* childids;

@@ -14,12 +14,13 @@
 @property (nonatomic) NSInteger depth;
 @property (nonatomic, readonly) NSString* title;
 @property (nonatomic, readonly) NSString* username;
+@property (nonatomic, readonly) NSString* html;
+@property (nonatomic, readonly) NSString* url;
+@property (nonatomic, readonly) NSString* domain;
 @property (nonatomic, readonly) NSNumber* itemID;
 @property (nonatomic, readonly) NSNumber* updated;
 @property (nonatomic, readonly) NSNumber* score;
 @property (nonatomic, readonly) NSArray* childids;
-@property (nonatomic, readonly) NSString* html;
-@property (nonatomic, readonly) NSString* url;
 @property (nonatomic, readonly) NSArray* urls; //abstracted urls
 @property (nonatomic, readonly) BOOL deleted;
 @property (nonatomic, readonly) BOOL dead;

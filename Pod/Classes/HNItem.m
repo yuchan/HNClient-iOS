@@ -25,6 +25,7 @@
         _depth = [aDecoder decodeIntegerForKey:@"depth"];
         _username = [aDecoder decodeObjectForKey:@"by"];
         _url = [aDecoder decodeObjectForKey:@"url"];
+        _domain = [aDecoder decodeObjectForKey:@"domain"];
         _deleted = [aDecoder decodeBoolForKey:@"deleted"];
         _score = [aDecoder decodeObjectForKey:@"score"];
         _dead = [aDecoder decodeBoolForKey:@"dead"];
@@ -42,6 +43,7 @@
     [aCoder encodeObject:_itemID forKey:@"id"];
     [aCoder encodeObject:_username forKey:@"by"];
     [aCoder encodeObject:_url forKey:@"url"];
+    [aCoder encodeObject:_domain forKey:@"domain"];
     [aCoder encodeBool:_deleted forKey:@"deleted"];
     [aCoder encodeBool:_dead forKey:@"dead"];
     [aCoder encodeObject:_html forKey:@"text"];
@@ -59,6 +61,7 @@
     _title = [dictionary objectForKey:@"title"];
     _username = [dictionary objectForKey:@"by"];
     _url = [dictionary objectForKey:@"url"];
+    _domain = [dictionary objectForKey:@"domain"];
     _score = [dictionary objectForKey:@"score"];
     _updated = [dictionary objectForKey:@"time"];
     [self initializeText:[dictionary objectForKey:@"text"]];

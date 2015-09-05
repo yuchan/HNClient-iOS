@@ -14,7 +14,9 @@
 static NSString* const firebase_endpoint = @"https://hacker-news.firebaseio.com/v0/";
 
 @interface HNClient : NSObject
-- (void)loadTopStories:(void (^)(HNItem* item, NSError* error, NSInteger idx, NSInteger count))block;
+- (void)loadTopStories:(void (^)(HNItem* item, NSError* error))block;
+- (void)loadTopStories:(void (^)(HNItem *, NSError *))block completion:(void (^)(BOOL isCancelled, NSArray *items))completion;
 - (void)loadUser:(NSString *)userName complete:(void (^)(HNUser* user, NSError* error, NSInteger idx, NSInteger count))block;
 - (void)loadChild:(HNItem*)parent OnChildLoaded:(void (^)(HNItem* item, HNItem* parent))block;
+- (void)loadChild:(HNItem*)parent OnChildLoaded:(void (^)(HNItem* item, HNItem* parent))block completion:(void (^)(BOOL isCancelled, NSArray *childs))completion;
 @end

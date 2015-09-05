@@ -1,1 +1,0 @@
-../../../../../Pod/Classes/Vendor/google-toolbox-for-mac/Foundation/GTMNSString+HTML.h

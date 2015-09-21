@@ -1,5 +1,5 @@
 PODS:
-  - Expecta (1.0.2)
+  - Expecta (1.0.3)
   - Expecta+Snapshots (2.0.0):
     - Expecta (~> 1.0)
     - FBSnapshotTestCase/Core (~> 2.0.3)
@@ -25,7 +25,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Expecta: 54e8a3530add08f4f0208c111355eda7cde74a53
+  Expecta: 9d1bff6c8b0eeee73a166a2ee898892478927a15
   Expecta+Snapshots: 29b38dd695bc72a0ed2bea833937d78df41943ba
   FBSnapshotTestCase: d94cf34841c9e77390e29009e8e2713479d48753
   Firebase: 2db60272f68ce40c7d47e5ae6eddc16977c65d4c

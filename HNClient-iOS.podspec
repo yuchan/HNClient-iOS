@@ -20,7 +20,7 @@ DESC
   s.author           = { "yuchan" => "github@junkpiano.me" }
   s.source           = { :git => "https://github.com/yuchan/HNClient-iOS.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/iMickx'
-
+  s.pod_target_xcconfig = { 'ENABLE_BITCODE' => 'NO' }
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 

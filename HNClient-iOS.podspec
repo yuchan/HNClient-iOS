@@ -29,7 +29,6 @@ DESC
     'HNClient-iOS' => ['Pod/Assets/*.png']
   }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
   s.dependency 'Firebase', '>= 2.3.3'
   s.xcconfig = { 'FRAMEWORK_SEARCH_PATHS' => '"${PODS_ROOT}/Firebase"' }
   s.frameworks    = 'Firebase', 'SystemConfiguration', 'CFNetwork', 'Security'

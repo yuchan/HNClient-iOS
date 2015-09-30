@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #import "HNItem.h"
-#import "HNUser.h"
+#import "HNClient-iOS-Swift.h"
 
 static NSString* const firebase_endpoint = @"https://hacker-news.firebaseio.com/v0/";
 

@@ -25,9 +25,11 @@
         _depth = [aDecoder decodeIntegerForKey:@"depth"];
         _username = [aDecoder decodeObjectForKey:@"by"];
         _url = [aDecoder decodeObjectForKey:@"url"];
+        _type = [aDecoder decodeObjectForKey:@"type"];
         _domain = [aDecoder decodeObjectForKey:@"domain"];
         _deleted = [aDecoder decodeBoolForKey:@"deleted"];
         _score = [aDecoder decodeObjectForKey:@"score"];
+        _descendants = [aDecoder decodeObjectForKey:@"descendants"];
         _dead = [aDecoder decodeBoolForKey:@"dead"];
         [self initializeText:(NSString*)[aDecoder decodeObjectForKey:@"text"]];
         _updated = [aDecoder decodeObjectForKey:@"updated"];
@@ -43,13 +45,17 @@
     [aCoder encodeObject:_itemID forKey:@"id"];
     [aCoder encodeObject:_username forKey:@"by"];
     [aCoder encodeObject:_url forKey:@"url"];
+    [aCoder encodeObject:_type forKey:@"type"];
     [aCoder encodeObject:_domain forKey:@"domain"];
     [aCoder encodeBool:_deleted forKey:@"deleted"];
     [aCoder encodeBool:_dead forKey:@"dead"];
     [aCoder encodeObject:_html forKey:@"text"];
     [aCoder encodeObject:_score forKey:@"score"];
+    [aCoder encodeObject:_descendants forKey:@"descendants"];
     [aCoder encodeObject:_updated forKey:@"updated"];
 }
+
+// MARK: Public methods
 
 - (id)initWithItemDictionary:(NSDictionary*)dictionary
 {
@@ -61,8 +67,10 @@
     _title = [dictionary objectForKey:@"title"];
     _username = [dictionary objectForKey:@"by"];
     _url = [dictionary objectForKey:@"url"];
+    _type = [dictionary objectForKey:@"type"];
     _domain = [dictionary objectForKey:@"domain"];
     _score = [dictionary objectForKey:@"score"];
+    _descendants = [dictionary objectForKey:@"descendants"];
     _updated = [dictionary objectForKey:@"time"];
     [self initializeText:[dictionary objectForKey:@"text"]];
     if ([dictionary objectForKey:@"deleted"]) {
@@ -78,6 +86,26 @@
 {
     [_kids addObject:item];
 }
+
+- (HNItemType)itemType
+{
+    NSString *type = self.type;
+    if ([type isEqualToString:@"job"]) {
+        return HNItemTypeJob;
+    } else if ([type isEqualToString:@"comment"]) {
+        return HNItemTypeComment;
+    } else if ([type isEqualToString:@"poll"]) {
+        return HNItemTypePoll;
+    } else if ([type isEqualToString:@"pollopt"]) {
+        return HNItemTypePollOpt;
+    } else if ([type isEqualToString:@"story"] && (!self.url || self.url.length == 0)) {
+        return HNItemTypeAsk;
+    }
+    
+    return HNItemTypeStory;
+}
+
+// MARK: Private
 
 - (void)initializeText:(NSString*)origText
 {

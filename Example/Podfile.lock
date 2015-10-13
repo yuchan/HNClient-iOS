@@ -1,22 +1,12 @@
 PODS:
   - Expecta (1.0.3)
-  - Expecta+Snapshots (2.0.0):
-    - Expecta (~> 1.0)
-    - FBSnapshotTestCase/Core (~> 2.0.3)
-  - FBSnapshotTestCase (2.0.4):
-    - FBSnapshotTestCase/SwiftSupport (= 2.0.4)
-  - FBSnapshotTestCase/Core (2.0.4)
-  - FBSnapshotTestCase/SwiftSupport (2.0.4):
-    - FBSnapshotTestCase/Core
-  - Firebase (2.3.3)
+  - Firebase (2.4.2)
   - HNClient-iOS (0.2.0):
     - Firebase (>= 2.3.3)
-  - Specta (1.0.3)
+  - Specta (1.0.4)
 
 DEPENDENCIES:
   - Expecta
-  - Expecta+Snapshots
-  - FBSnapshotTestCase
   - HNClient-iOS (from `../`)
   - Specta
 
@@ -26,10 +16,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Expecta: 9d1bff6c8b0eeee73a166a2ee898892478927a15
-  Expecta+Snapshots: 29b38dd695bc72a0ed2bea833937d78df41943ba
-  FBSnapshotTestCase: d94cf34841c9e77390e29009e8e2713479d48753
-  Firebase: 2db60272f68ce40c7d47e5ae6eddc16977c65d4c
-  HNClient-iOS: a771ec32f3a159298a7c547e81d6d2171c1dc1d7
-  Specta: cf3e4188cf35375c3ee2cd03f8db8f1f4ef98234
+  Firebase: 5e898ed5012c81d28ca5fae1113c6b61a172bc6d
+  HNClient-iOS: efcdb58672a2e7b9be9dc0dfa896fbd5067a73a1
+  Specta: 69bb134672aae190a1379ff91df07dad8dd1f869
 
-COCOAPODS: 0.39.0.beta.3
+COCOAPODS: 0.39.0

@@ -28,8 +28,8 @@
 		705D21311B9AE4D900BE0E82 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 705D21301B9AE4D900BE0E82 /* libicucore.dylib */; };
 		70B7395F1B9AE77D0034CAF3 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 705D212C1B9AE4BD00BE0E82 /* libc++.dylib */; };
 		70DCAE6C1B9AECAE00CCB676 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70DCAE6B1B9AECAE00CCB676 /* Firebase.framework */; };
-		7B97B5975703000964E40183 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 146CCFA9148F020C786BC4B2 /* Pods_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		A52B02A67011E17F158ABF67 /* Pods_HNClient_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46DDA9A8DE55916E488B5E9B /* Pods_HNClient_iOS.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		7B97B5975703000964E40183 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 146CCFA9148F020C786BC4B2 /* Pods_Tests.framework */; };
+		A52B02A67011E17F158ABF67 /* Pods_HNClient_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46DDA9A8DE55916E488B5E9B /* Pods_HNClient_iOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -272,7 +272,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = HN;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = yuchan;
 				TargetAttributes = {
 					6003F5AD195388D20070C39A = {
@@ -483,10 +483,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					"$(ARCHS_STANDARD)",
-					x86_64,
-				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -501,6 +497,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -527,10 +524,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					"$(ARCHS_STANDARD)",
-					x86_64,
-				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -565,10 +558,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3353BF8DFD24F3BD4C7254B1 /* Pods-HNClient-iOS.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD)",
-					x86_64,
-				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -583,6 +572,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "arm64 armv7 armv7s x86_64";
 				WRAPPER_EXTENSION = app;
@@ -593,10 +583,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 20CC9BD3C122FE9E025E0807 /* Pods-HNClient-iOS.release.xcconfig */;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD)",
-					x86_64,
-				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -611,6 +597,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "arm64 armv7 armv7s x86_64";
 				WRAPPER_EXTENSION = app;
@@ -634,6 +621,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -653,6 +641,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;

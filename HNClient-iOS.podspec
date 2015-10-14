@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "HNClient-iOS"
-  s.version          = "0.2.0"
+  s.version          = "0.3.0"
   s.summary          = "HNClient-iOS."
   s.description      = <<-DESC
 Hacker news api wrapper in Objective-C.                       
